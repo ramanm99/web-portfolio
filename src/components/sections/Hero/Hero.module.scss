@@ -1,0 +1,160 @@
+@use "@/styles/mixins" as *;
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-block: 10rem $space-24;
+}
+
+.bg {
+  @include absolute-fill;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.inner {
+  @include container;
+  position: relative;
+  z-index: $z-content;
+}
+
+.content {
+  max-width: 900px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-2 $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  background: rgba($color-accent, 0.05);
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  margin-bottom: $space-8;
+}
+
+.badgeCounter {
+  font-size: $font-size-md;
+  font-weight: 700;
+  color: $color-accent;
+  font-family: $font-display;
+}
+
+.name {
+  font-size: $font-size-hero;
+  font-family: $font-display;
+  font-weight: 800;
+  color: $color-text;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: $space-6;
+  perspective: 600px;
+
+  @include respond-to('sm') {
+    font-size: clamp(3rem, 14vw, 6rem);
+  }
+}
+
+.title {
+  font-family: $font-mono;
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+  margin-bottom: $space-6;
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  color: $color-accent;
+}
+
+.bio {
+  font-size: $font-size-base;
+  color: $color-text-muted;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: $space-12;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-4 $space-8;
+  background: $color-accent;
+  color: $color-bg;
+  border-radius: $radius-full;
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-out-expo;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba($color-accent, 0.35);
+  }
+}
+
+.ctaSecondary {
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-decoration-color: rgba($color-text-muted, 0.3);
+  text-underline-offset: 4px;
+  transition: color $duration-fast $ease-out-expo, text-decoration-color $duration-fast;
+
+  &:hover {
+    color: $color-text;
+    text-decoration-color: $color-text;
+  }
+}
+
+.tags {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+  margin-top: $space-16;
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  color: $color-text-subtle;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: $space-1 $space-3;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: border-color $duration-fast, color $duration-fast;
+
+  &:hover {
+    border-color: rgba($color-accent, 0.3);
+    color: $color-text-muted;
+  }
+}
+
+.indicator {
+  position: absolute;
+  bottom: $space-12;
+  left: 50%;
+  transform: translateX(-50%);
+}

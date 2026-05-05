@@ -1,0 +1,118 @@
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// ─── Reset ─────────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: vars.$color-bg;
+  color: vars.$color-text;
+  font-family: vars.$font-body;
+  font-size: vars.$font-size-base;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+button, a {
+  cursor: none;
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+ul, ol { list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: vars.$font-display;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: vars.$color-accent;
+  color: vars.$color-bg;
+}
+
+:focus-visible {
+  outline: 2px solid vars.$color-accent;
+  outline-offset: 3px;
+}
+
+// ─── Smooth scroll wrapper ──────────────────────────────────────────────────
+#smooth-wrapper {
+  overflow: hidden;
+}
+
+#smooth-content {
+  will-change: transform;
+}
+
+// ─── Global utility classes ─────────────────────────────────────────────────
+.section {
+  @include mix.section-padding;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+.container {
+  @include mix.container;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: vars.$space-2;
+  font-family: vars.$font-mono;
+  font-size: vars.$font-size-xs;
+  color: vars.$color-accent;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: vars.$space-6;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: vars.$color-accent;
+  }
+}
+
+.section-heading {
+  font-size: vars.$font-size-2xl;
+  color: vars.$color-text;
+  margin-bottom: vars.$space-6;
+}
+
+.clip-hidden {
+  clip-path: inset(0 0 100% 0);
+}
+
+.will-change-transform {
+  will-change: transform;
+}

@@ -1,0 +1,123 @@
+@use "@/styles/mixins" as *;
+.header {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: $z-header;
+  padding-block: $space-4;
+  background: linear-gradient(to bottom, rgba($color-bg, 0.9), transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: $color-accent;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.inner {
+  @include container;
+  @include flex-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  font-family: $font-display;
+  font-size: $font-size-md;
+  font-weight: 700;
+  color: $color-text;
+  transition: color $duration-fast $ease-out-expo;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.logoName {
+  letter-spacing: -0.03em;
+}
+
+.logoDot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: $color-accent;
+  border-radius: $radius-full;
+  align-self: flex-end;
+  margin-bottom: 4px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+
+  @include respond-to('md') {
+    display: none;
+  }
+}
+
+.navLink {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  transition: color $duration-fast $ease-out-expo;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: $color-accent;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $duration-base $ease-out-expo;
+  }
+
+  &:hover,
+  &.active {
+    color: $color-text;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.cta {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: $space-2 $space-6;
+  border: 1px solid $color-accent;
+  border-radius: $radius-full;
+  color: $color-accent;
+  transition:
+    background $duration-fast $ease-out-expo,
+    color $duration-fast $ease-out-expo;
+
+  &:hover {
+    background: $color-accent;
+    color: $color-bg;
+  }
+
+  @include respond-to('md') {
+    display: none;
+  }
+}

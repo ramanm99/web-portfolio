@@ -1,0 +1,3 @@
+// Used by vite additionalData to inject variables into every .module.scss file.
+// Only forwards variables — mixins load variables themselves to avoid circular @use issues.
+@forward 'variables';

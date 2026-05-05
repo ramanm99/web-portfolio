@@ -1,0 +1,201 @@
+.experience {
+  background: $color-bg;
+}
+
+.pin {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding-top: $space-16;
+  padding-bottom: $space-8;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.timelineSvgWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.timelineSvg {
+  width: 100%;
+  height: 2px;
+  overflow: visible;
+}
+
+// Horizontal track
+.track {
+  display: flex;
+  gap: $space-6;
+  padding-inline: $container-padding;
+  padding-bottom: $space-12;
+  will-change: transform;
+  align-items: center;
+  flex: 1;
+  // first card margin to center start
+  &::before {
+    content: '';
+    flex-shrink: 0;
+    width: calc((100vw - #{$container-max}) / 2);
+    min-width: 0;
+  }
+}
+
+.card {
+  flex-shrink: 0;
+  width: min(480px, 85vw);
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  position: relative;
+  transition: border-color $duration-base $ease-out-expo;
+  will-change: transform, opacity;
+}
+
+.cardActive {
+  border-color: rgba($color-accent, 0.25);
+
+  .cardNumber {
+    color: $color-accent;
+  }
+}
+
+.cardNumber {
+  font-family: $font-mono;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 800;
+  color: rgba($color-text, 0.06);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: color $duration-slow;
+  position: absolute;
+  top: $space-6;
+  right: $space-8;
+}
+
+.cardPeriod {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  color: $color-accent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $color-text;
+  letter-spacing: -0.02em;
+  padding-right: $space-16;
+}
+
+.cardRole {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  font-style: italic;
+}
+
+.cardDesc {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  line-height: 1.6;
+}
+
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.achievement {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  padding-left: $space-4;
+  position: relative;
+  line-height: 1.5;
+
+  &::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: $color-accent;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1;
+  margin-top: auto;
+}
+
+.stackTag {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  color: $color-text-subtle;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: $space-1 $space-2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: border-color $duration-fast, color $duration-fast;
+
+  &:hover {
+    border-color: rgba($color-accent, 0.2);
+    color: $color-text-muted;
+  }
+}
+
+.industry {
+  position: absolute;
+  top: $space-4;
+  left: $space-8;
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  color: $color-text-subtle;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: $color-surface-2;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  padding: $space-1 $space-2;
+}
+
+// Dot progress
+.progress {
+  position: absolute;
+  bottom: $space-6;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: $space-2;
+  z-index: 2;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background: $color-border;
+  transition: background $duration-base, transform $duration-base $ease-bounce;
+}
+
+.dotActive {
+  background: $color-accent;
+  transform: scale(1.5);
+}

@@ -1,0 +1,126 @@
+@use "@/styles/mixins" as *;
+.contact {
+  background: $color-bg;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-16;
+  align-items: center;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr;
+    gap: $space-12;
+  }
+}
+
+.heading {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: $color-text;
+}
+
+.accent {
+  @include text-gradient;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.sub {
+  font-size: $font-size-base;
+  color: $color-text-muted;
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+.email {
+  font-family: $font-mono;
+  font-size: $font-size-lg;
+  color: $color-text;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-color: rgba($color-text, 0.15);
+  text-underline-offset: 6px;
+  transition: color $duration-fast, text-decoration-color $duration-fast;
+
+  &:hover {
+    color: $color-accent;
+    text-decoration-color: rgba($color-accent, 0.4);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-8;
+  background: $color-accent;
+  color: $color-bg;
+  border-radius: $radius-full;
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+  will-change: transform;
+  transition: box-shadow $duration-base $ease-out-expo;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba($color-accent, 0.4);
+  }
+}
+
+.meta {
+  display: flex;
+  gap: $space-8;
+  flex-wrap: wrap;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.metaLabel {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  color: $color-text-subtle;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.metaValue {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  background: $color-accent;
+  border-radius: $radius-full;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($color-accent, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba($color-accent, 0); }
+}

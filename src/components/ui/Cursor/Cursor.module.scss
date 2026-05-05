@@ -1,0 +1,35 @@
+@use "@/styles/mixins" as *;
+.dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: $color-accent;
+  border-radius: $radius-full;
+  pointer-events: none;
+  z-index: $z-cursor;
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+
+.ring {
+  position: fixed;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid $color-accent;
+  border-radius: $radius-full;
+  pointer-events: none;
+  z-index: $z-cursor;
+  will-change: transform;
+  opacity: 0.7;
+}
+
+@media (hover: none) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}

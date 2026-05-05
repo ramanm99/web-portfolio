@@ -1,0 +1,171 @@
+@use "@/styles/mixins" as *;
+.projects {
+  background: $color-bg-2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('sm') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  padding: $space-8;
+  cursor: pointer;
+  will-change: transform;
+  transition: border-color $duration-base $ease-out-expo;
+
+  &:hover {
+    border-color: rgba($color-accent, 0.2);
+  }
+}
+
+.cardExpanded {
+  grid-column: span 2;
+  border-color: rgba($color-accent, 0.2);
+  background: $color-surface-2;
+
+  @include respond-to('sm') {
+    grid-column: span 1;
+  }
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  height: 100%;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $space-2;
+}
+
+.cardIndex {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  color: $color-text-subtle;
+}
+
+.cardIndustry {
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  color: $color-accent;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: $color-accent-dim;
+  border-radius: $radius-full;
+  padding: $space-1 $space-3;
+}
+
+.cardToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  font-size: 1.1rem;
+  color: $color-text-muted;
+  line-height: 1;
+  transition: border-color $duration-fast, color $duration-fast;
+
+  .card:hover & {
+    border-color: rgba($color-accent, 0.4);
+    color: $color-accent;
+  }
+}
+
+.cardTitle {
+  font-size: $font-size-md;
+  font-weight: 700;
+  color: $color-text;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.cardPeriod {
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  color: $color-accent;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cardRole {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  font-style: italic;
+}
+
+.cardDetails {
+  overflow: hidden;
+}
+
+.cardDesc {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  line-height: 1.7;
+  margin-bottom: $space-4;
+}
+
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin-bottom: $space-4;
+}
+
+.achievement {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  padding-left: $space-4;
+  position: relative;
+  line-height: 1.5;
+
+  &::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: $color-accent;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1;
+  margin-top: auto;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+.stackTag {
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  color: $color-text-subtle;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: $space-1 $space-2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: border-color $duration-fast, color $duration-fast;
+
+  &:hover {
+    border-color: rgba($color-accent, 0.2);
+    color: $color-text-muted;
+  }
+}
